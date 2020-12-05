@@ -109,11 +109,13 @@ public class MovieDetails extends AppCompatActivity {
                 Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show();
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(this,LoginController.class);
-                startActivity(intent);
+                this.startActivity(intent);
+                return true;
             case R.id.menuNeedToSee:
-                Toast.makeText(this, "Going to history...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Going to added movies...", Toast.LENGTH_SHORT).show();
                 Intent intent1 = new Intent(this,RemainderMovieController.class);
-                startActivity(intent1);
+                this.startActivity(intent1);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }

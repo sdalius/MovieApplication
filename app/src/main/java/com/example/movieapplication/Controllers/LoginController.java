@@ -42,6 +42,11 @@ public class LoginController extends AppCompatActivity {
     }
 
     @Override
+    public void onBackPressed() {
+        super.onDestroy();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginview);
@@ -116,10 +121,19 @@ public class LoginController extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.menuNeedToSee) {
-            Toast.makeText(this, "Going to selected movies...", Toast.LENGTH_SHORT).show();
-            Intent intent1 = new Intent(this, RemainderMovieController.class);
-            startActivity(intent1);
+        switch (item.getItemId())
+        {
+            case R.id.menuLogout:
+                Toast.makeText(this, "Logging out...", Toast.LENGTH_SHORT).show();
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(this,LoginController.class);
+                this.startActivity(intent);
+                return true;
+            case R.id.menuNeedToSee:
+                Toast.makeText(this, "Going to added movies...", Toast.LENGTH_SHORT).show();
+                Intent intent1 = new Intent(this,RemainderMovieController.class);
+                this.startActivity(intent1);
+                return true;
         }
         return super.onOptionsItemSelected(item);
     }
