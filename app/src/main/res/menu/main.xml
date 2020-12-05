@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Movies which i want to see"
+        android:id="@+id/menuNeedToSee"
+        android:orderInCategory="100" />
+    <item
+        android:title="Log Out"
+        android:id="@+id/menuLogout"
+        android:orderInCategory="101"/>
+</menu>
